@@ -1,28 +1,31 @@
 ﻿@page "/"
-@using MyBlazorProject.Models;
+@using RowDetailTemplate.Models;
 @inject Microsoft.AspNetCore.Components.NavigationManager UriHelper;
 <style>
-    #img-wrapper{
+    #img-wrapper {
         position: relative;
         display: inline-block;
     }
-    img{
+
+    img {
         height: 60px;
         width: 60px;
         vertical-align: baseline;
     }
-    #details{
+
+    #details {
         display: inline-block;
     }
+
     td {
         border-bottom: 0.5px solid #e0e0e0;
     }
-   /* .customcolor{
-        background-color: #d3d3d3;
-    }
-    .customcellcolor{
-        background-color: aqua;
-    }*/
+    /* .customcolor{
+            background-color: #d3d3d3;
+        }
+        .customcellcolor{
+            background-color: aqua;
+        }*/
 </style>
 <SfTreeGrid DataSource="@TreeGridData" IdMapping="EmployeeID" ParentIdMapping="ParentId" TreeColumnIndex="0" RowHeight="83">
     <TreeGridTemplates>
@@ -47,19 +50,19 @@
             }
         </RowTemplate>
         @*<DetailTemplate>
-            @{
-                var employeeDetails = (context as Employee);
-                <div style="padding-left:20px">
-                    <div id="img-wrapper">
-                        <img src="@UriHelper.ToAbsoluteUri($"images/{employeeDetails.EmpID}.png")" alt="@employeeDetails.EmpID" />
-                    </div>
-                    <div id="details">
-                        <div>@employeeDetails.Address</div>
-                        <div>@employeeDetails.Country</div>
-                        <div>@employeeDetails.Contact</div>
-                    </div>
-                </div>
-            }
+        @{
+        var employeeDetails = (context as Employee);
+        <div style="padding-left:20px">
+        <div id="img-wrapper">
+        <img src="@UriHelper.ToAbsoluteUri($"images/{employeeDetails.EmpID}.png")" alt="@employeeDetails.EmpID" />
+        </div>
+        <div id="details">
+        <div>@employeeDetails.Address</div>
+        <div>@employeeDetails.Country</div>
+        <div>@employeeDetails.Contact</div>
+        </div>
+        </div>
+        }
         </DetailTemplate>*@
     </TreeGridTemplates>
     <TreeGridColumns>
@@ -72,7 +75,7 @@
     @*<TreeGridEvents RowDataBound="CustomRow" TValue="Employee" QueryCellInfo="CustomCell"></TreeGridEvents>*@
 </SfTreeGrid>
 
-@code{
+@code {
     public IEnumerable<Employee> TreeGridData { get; set; }
     protected override void OnInitialized()
     {
